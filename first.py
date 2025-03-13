@@ -8,21 +8,31 @@ def update():
 def register():
         print("\tRegister Here")
         global f_name,l_name,age, arr
+        file=open("data.txt","a")
         f_name=input("Enter your First name ")
         l_name=input("Enter Last Name ")
         age=input("Enter your Age ")
         arr=[f_name,l_name,age] #To hold Data in Array way
+        file.write("\nFirst Name:"+f_name)        
+        file.write("\nFirst Last:"+l_name)
+        file.write("\nAge :"+age)
+        file.write("\n________________________________________\n")
+        file.close()
         display() #Calling function
         
 def display():
         print("Your Stored Data Are\n")
+        file=open("data.txt","r")
+        print(file.read())
+        file.close()
+        
         # print("first Name:"+f_name)
         # print("Last Name:"+l_name)
         # print("Age:"+age)
         
-        cop=list(arr) #Copy From arr to cop
-        for i in cop:
-                print(i)
+        # cop=list(arr) #Copy From arr to cop
+        # for i in cop:
+        #         print(i)
                 
         
 print("Hello  Every one Today i Started Pyhthon Code!\n\n")
@@ -31,9 +41,8 @@ choice=input("Enter your Choice")
 ne_ch=int(choice) #parsing
 if ne_ch==1:
         register()
-elif 2 == choice:
-        display()
-        
+elif 2== ne_ch:
+        display()    
 elif 3== ne_ch:
         search()
 elif 4==ne_ch:
