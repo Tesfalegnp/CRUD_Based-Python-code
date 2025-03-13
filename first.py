@@ -6,9 +6,24 @@ def delete():
 def update():
         print("Updating")
 def register():
-        print("Register Here")
+        print("\tRegister Here")
+        global f_name,l_name,age, arr
+        f_name=input("Enter your First name ")
+        l_name=input("Enter Last Name ")
+        age=input("Enter your Age ")
+        arr=[f_name,l_name,age] #To hold Data in Array way
+        display() #Calling function
+        
 def display():
-        print("Printing...")
+        print("Your Stored Data Are\n")
+        # print("first Name:"+f_name)
+        # print("Last Name:"+l_name)
+        # print("Age:"+age)
+        
+        cop=list(arr) #Copy From arr to cop
+        for i in cop:
+                print(i)
+                
         
 print("Hello  Every one Today i Started Pyhthon Code!\n\n")
 print("manu option\n 1-register\n 2-display\n 3-Search\n 4-Delete \n 5-Uptdate")
