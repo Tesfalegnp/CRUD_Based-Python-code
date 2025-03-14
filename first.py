@@ -29,6 +29,7 @@ def display():
         file=open("data.txt","r")
         print(file.read())
         file.close()
+def check():
         if os.path.exists("data.txt"):
                 print("file is existed")
         else:
