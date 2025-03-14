@@ -1,8 +1,12 @@
+import os
                 # Finctio Area 
 def search():
         print("Searching")
 def delete():
-        print("Delete")
+        if os.path.exists("data.txt"):
+                os.remove("data.txt")
+        else:
+                print("The File is Not existed")
 def update():
         print("Updating")
 def register():
@@ -25,7 +29,10 @@ def display():
         file=open("data.txt","r")
         print(file.read())
         file.close()
-        
+        if os.path.exists("data.txt"):
+                print("file is existed")
+        else:
+                print("Doesn't existed")
         # print("first Name:"+f_name)
         # print("Last Name:"+l_name)
         # print("Age:"+age)
@@ -36,7 +43,7 @@ def display():
                 
         
 print("Hello  Every one Today i Started Pyhthon Code!\n\n")
-print("manu option\n 1-register\n 2-display\n 3-Search\n 4-Delete \n 5-Uptdate")
+print("\tmanu option\n\t 1-register\n\t 2-display\n\t 3-Search\n\t 4-Delete \n\t 5-Uptdate\n\t 6-Check The file")
 choice=input("Enter your Choice")
 ne_ch=int(choice) #parsing
 if ne_ch==1:
@@ -49,7 +56,8 @@ elif 4==ne_ch:
         delete()
 elif 5==ne_ch:
         update()
-    
+elif 6==ne_ch:
+        check()
    
    
    
