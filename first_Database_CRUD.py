@@ -1,63 +1,44 @@
-import os
-                # Finctio Area 
-def search():
-        print("Searching")
-def delete():
-        if os.path.exists("data.txt"):
-                os.remove("data.txt")
+import mysql.connector
+#to conncted with database
+con=mysql.connector.connect(
+        host="localhost",
+        username="root",
+        password="",
+        database="python"
+    )
+if con:
+       print("Connected")
+else:
+    print("not connceted") 
+    #Wrire Meno Messahe
+    
+print("\tMenu Option\n\t 1-register\n\t 2-Display\n\t 3-Search\n\t 4-Delete\n\t 5-update")
+
+ch=input("Please Enter your Choice:- ")
+cho=int(ch)
+
+#Match is insted of Switch other program 
+if cho==1: 
+        name=input("Please enter your name")
+        email=input("Please Enter your Email")
+        passowrd=input("enter your password")
+        sql="INSERT INTO users ('username', 'email', 'password') Values(%s,%s,%s)"
+        valu=(name,email,passowrd)
+        cor=con.cursor()
+        cor.execute(sql,valu)
+        con.commit()
+        if(cor.rowcount):
+            print("inserted________")
         else:
-                print("The File is Not existed")
-def update():
-        print("Updating")
-def register():
-        print("\tRegister Here")
-        global f_name,l_name,age, arr
-        file=open("data.txt","a")
-        f_name=input("Enter your First name ")
-        l_name=input("Enter Last Name ")
-        age=input("Enter your Age ")
-        arr=[f_name,l_name,age] #To hold Data in Array way
-        file.write("\nFirst Name:"+f_name)        
-        file.write("\nFirst Last:"+l_name)
-        file.write("\nAge :"+age)
-        file.write("\n________________________________________\n")
-        file.close()
-        display() #Calling function
+            print("Not Enserted")
         
-def display():
-        print("Your Stored Data Are\n")
-        file=open("data.txt","r")
-        print(file.read())
-        file.close()
-def check():
-        if os.path.exists("data.txt"):
-                print("file is existed")
-        else:
-                print("Doesn't existed")
-        # print("first Name:"+f_name)
-     
-     
-      
-print("Hello  Every one Don't worries About, Today we Starte Pyhthon Code In Simple Way!\n\n")
-print("\tmanu option\n\t 1-register\n\t 2-display\n\t 3-Search\n\t 4-Delete \n\t 5-Uptdate\n\t 6-Check The file")
-choice=input("Enter your Choice")
-ne_ch=int(choice) #parsing
-if ne_ch==1:
-        register()
-elif 2== ne_ch:
-        display()    
-elif 3== ne_ch:
-        search()
-elif 4==ne_ch:
-        delete()
-elif 5==ne_ch:
-        update()
-elif 6==ne_ch:
-        check()
-   
-   
-   
-   
-   
-   
-   
+        
+elif cho==2:
+    
+    print("Displaying")
+elif cho==3:
+    print("Searching")
+elif cho==4:
+    print("Deleting")
+elif cho==5:
+    print("Updating")
